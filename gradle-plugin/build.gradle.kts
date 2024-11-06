@@ -3,7 +3,7 @@ import org.gradle.jvm.tasks.Jar
 
 plugins {
     idea
-    id("org.jetbrains.kotlin.jvm") version "1.9.24"
+    kotlin("jvm") version "1.9.24"
     `java-gradle-plugin`
 }
 
