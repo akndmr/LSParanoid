@@ -3,14 +3,14 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinBasePlugin
 
 
 plugins {
-    alias(libs.plugins.lsplugin.publish)
-    alias(libs.plugins.kotlin) apply false
+    id("org.jetbrains.kotlin.jvm") version "2.0.21"
+    id("org.lsposed.lsplugin.publish") version "1.1"
 }
 
 
 allprojects {
     group = "org.lsposed.lsparanoid"
-    version = "0.6.0"
+    version = "0.6.1"
 
     plugins.withType(JavaPlugin::class.java) {
         extensions.configure(JavaPluginExtension::class.java) {

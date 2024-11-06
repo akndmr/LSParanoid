@@ -3,7 +3,7 @@ import org.gradle.jvm.tasks.Jar
 
 plugins {
     idea
-    alias(libs.plugins.kotlin)
+    id("org.jetbrains.kotlin.jvm") version "2.0.21"
     `java-gradle-plugin`
     `maven-publish`
     signing
@@ -13,8 +13,8 @@ plugins {
 dependencies {
     implementation(projects.core)
     implementation(projects.processor)
-    implementation(libs.kotlin.api)
-    implementation(libs.agp.api)
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21")
+    implementation("com.android.tools.build:gradle-api:8.7.2")
 }
 
 val generatedDir = File(projectDir, "generated")

@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.kotlin)
+    id("org.jetbrains.kotlin.jvm") version "2.0.21"
     `maven-publish`
     signing
 }
@@ -7,8 +7,8 @@ plugins {
 dependencies {
     compileOnly(gradleApi())
     implementation(projects.core)
-    implementation(libs.grip)
-    implementation(libs.asm.common)
+    implementation("com.joom.grip:grip:0.9.1")
+    implementation("org.ow2.asm:asm-commons:9.7.1")
 }
 
 publish {
