@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinBasePlugin
 
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.0.21"
+    id("org.jetbrains.kotlin.jvm") version "1.9.24"
     id("org.lsposed.lsplugin.publish") version "1.1"
 }
 

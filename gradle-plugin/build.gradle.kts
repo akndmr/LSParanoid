@@ -3,18 +3,16 @@ import org.gradle.jvm.tasks.Jar
 
 plugins {
     idea
-    id("org.jetbrains.kotlin.jvm") version "2.0.21"
+    id("org.jetbrains.kotlin.jvm") version "1.9.24"
     `java-gradle-plugin`
-    `maven-publish`
-    signing
 }
 
 
 dependencies {
     implementation(projects.core)
     implementation(projects.processor)
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21")
-    implementation("com.android.tools.build:gradle-api:8.7.2")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.9.24")
+    implementation("com.android.tools.build:gradle-api:8.2.2")
 }
 
 val generatedDir = File(projectDir, "generated")
@@ -62,30 +60,5 @@ tasks.withType(Jar::class.java) {
 idea {
     module {
         generatedSourceDirs.add(generatedJavaSourcesDir)
-    }
-}
-
-publish {
-    githubRepo = "LSPosed/LSParanoid"
-    publishPlugin("$group", rootProject.name, "org.lsposed.lsparanoid.plugin.LSParanoidPlugin") {
-        name = rootProject.name
-        description = "String obfuscator for Android applications"
-        url = "https://github.com/LSPosed/LSParanoid"
-        licenses {
-            license {
-                name = "Apache License 2.0"
-                url = "https://github.com/LSPosed/LSParanoid/blob/master/LICENSE.txt"
-            }
-        }
-        developers {
-            developer {
-                name = "LSPosed"
-                url = "https://lsposed.org"
-            }
-        }
-        scm {
-            connection = "scm:git:https://github.com/LSPosed/LSParanoid.git"
-            url = "https://github.com/LSPosed/LSParanoid"
-        }
     }
 }
