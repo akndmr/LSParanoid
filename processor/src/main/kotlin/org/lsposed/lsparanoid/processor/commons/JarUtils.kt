@@ -17,18 +17,28 @@
 package org.lsposed.lsparanoid.processor.commons
 
 import java.io.File
+import java.util.WeakHashMap
 import java.util.jar.JarEntry
 import java.util.jar.JarOutputStream
 import java.util.zip.ZipException
 
+private val trackedEntriesMap = WeakHashMap<JarOutputStream, MutableSet<String>>()
+
+private val JarOutputStream.trackedEntries: MutableSet<String>
+    get() = trackedEntriesMap.computeIfAbsent(this) { mutableSetOf() }
+
 internal fun JarOutputStream.createFile(name: String, data: ByteArray) {
+    val entryName = name.replace(File.separatorChar, '/')
+    if (trackedEntries.contains(entryName)) return
+
     try {
-        putNextEntry(JarEntry(name.replace(File.separatorChar, '/')))
+        putNextEntry(JarEntry(entryName))
         write(data)
         closeEntry()
+        trackedEntries.add(entryName)
     } catch (e: ZipException) {
         // it's normal to have duplicated files in META-INF
-        if (!name.startsWith("META-INF")) throw e
+        if (!entryName.startsWith("META-INF")) throw e
     }
 }
 
