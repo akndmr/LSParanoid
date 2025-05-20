@@ -10,7 +10,7 @@ plugins {
 
 allprojects {
     group = "com.github.akndmr"
-    version = "0.6.1"
+    version = "0.6.2"
 
     plugins.withType(JavaPlugin::class.java) {
         extensions.configure(JavaPluginExtension::class.java) {

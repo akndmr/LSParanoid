@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.github.akndmr.LSParanoid"
-version = "0.6.1"
+version = "0.6.2"
 
 dependencies {
     implementation(projects.core)
