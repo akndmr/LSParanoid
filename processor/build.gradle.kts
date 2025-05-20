@@ -12,11 +12,11 @@ dependencies {
 }
 
 publish {
-    githubRepo = "LSPosed/LSParanoid"
+    githubRepo = "https://github.com/akndmr/LSParanoid"
     publications {
         register<MavenPublication>(rootProject.name) {
             artifactId = project.name
-            group = group
+            group = "com.github.akndmr"
             version = version
             from(components.getByName("java"))
             pom {
