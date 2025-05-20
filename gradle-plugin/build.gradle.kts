@@ -9,6 +9,8 @@ plugins {
     signing
 }
 
+group = "com.github.akndmr.LSParanoid"
+version = "0.6.1"
 
 dependencies {
     implementation(projects.core)
@@ -86,6 +88,15 @@ publish {
         scm {
             connection = "scm:git:https://github.com/LSPosed/LSParanoid.git"
             url = "https://github.com/LSPosed/LSParanoid"
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        create("lsparanoid") {
+            id = "org.lsposed.lsparanoid"
+            implementationClass = "org.lsposed.lsparanoid.plugin.LSParanoidPlugin"
         }
     }
 }
